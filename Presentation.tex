@@ -1,281 +1,200 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Beamer Presentation
-% LaTeX Template
-% Version 1.0 (10/11/12)
-%
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND THEMES
-%----------------------------------------------------------------------------------------
-
 \documentclass{beamer}
-
-\mode<presentation> {
-
-% The Beamer class comes with a number of default slide themes
-% which change the colors and layouts of slides. Below this is a list
-% of all the themes, uncomment each in turn to see what they look like.
-
-%\usetheme{default}
-%\usetheme{AnnArbor}
-%\usetheme{Antibes}
-%\usetheme{Bergen}
-%\usetheme{Berkeley}
-%\usetheme{Berlin}
-%\usetheme{Boadilla}
-%\usetheme{CambridgeUS}
-%\usetheme{Copenhagen}
-%\usetheme{Darmstadt}
-%\usetheme{Dresden}
-%\usetheme{Frankfurt}
-%\usetheme{Goettingen}
-%\usetheme{Hannover}
-%\usetheme{Ilmenau}
-%\usetheme{JuanLesPins}
-%\usetheme{Luebeck}
-\usetheme{Madrid}
-%\usetheme{Malmoe}
-%\usetheme{Marburg}
-%\usetheme{Montpellier}
-%\usetheme{PaloAlto}
-%\usetheme{Pittsburgh}
-%\usetheme{Rochester}
-%\usetheme{Singapore}
-%\usetheme{Szeged}
-%\usetheme{Warsaw}
-
-% As well as themes, the Beamer class has a number of color themes
-% for any slide theme. Uncomment each of these in turn to see how it
-% changes the colors of your current slide theme.
-
-%\usecolortheme{albatross}
-%\usecolortheme{beaver}
-%\usecolortheme{beetle}
-%\usecolortheme{crane}
-%\usecolortheme{dolphin}
-%\usecolortheme{dove}
-%\usecolortheme{fly}
-%\usecolortheme{lily}
-%\usecolortheme{orchid}
-%\usecolortheme{rose}
-%\usecolortheme{seagull}
-%\usecolortheme{seahorse}
-%\usecolortheme{whale}
-%\usecolortheme{wolverine}
-
-%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
-%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
-
-%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
-}
-
-\usepackage{multicol}
-\usepackage{graphicx} % Allows including images
-\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
-
-%----------------------------------------------------------------------------------------
-%	TITLE PAGE
-%----------------------------------------------------------------------------------------
-
-\title[Intro to NNs]{ Introduction to Neural Networks } % The short title appears at the bottom of every slide, the full title is only on the title page
-
-\author{Gautom Das, Liam DeVoe, Natnael Kelkay} % Your name
-\institute[] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
 {
-Montgomery Blair High School \\ % Your institution for the title page
-\textit{} % Your email address
-}
-\date{\today} % Date, can be changed to a custom date
+  \usetheme{Madrid}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  \usefonttheme{default}  % or try serif, structurebold, ...
+  
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+} 
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+
+\title[Neural Networks]{Introduction to Neural Networks}
+\author{Gautom Das, Liam DeVoe, \& Natnael Kelkay}
+\institute{Montgomery Blair High School}
+\date{\today}
 
 \begin{document}
 
 \begin{frame}
-\titlepage % Print the title page as the first slide
+  \titlepage
 \end{frame}
 
-\begin{frame}
-\frametitle{Overview} % Table of contents slide, comment this block out to remove it
-\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
-\end{frame}
+% Uncomment these lines for an automatically generated outline.
+%\begin{frame}{Outline}
+%  \tableofcontents
+%\end{frame}
 
-%----------------------------------------------------------------------------------------
-%	PRESENTATION SLIDES
-%----------------------------------------------------------------------------------------
+\section{Introduction}
 
-%------------------------------------------------
-\section{Field} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
-%------------------------------------------------
+\begin{frame}{Introduction}
 
-\begin{frame}
-\frametitle{Introduction}
-Let's start off with a single neuron and attempt to model this neuron as a node in a graph:
-\end{frame}
+\begin{figure}
+\includegraphics[width=0.65\textwidth]{12img}
+\end{figure}
 
-%------------------------------------------------
 
-\begin{frame}
-\frametitle{Bullet Points}
-\begin{itemize}
-\item Lorem ipsum dolor sit amet, consectetur adipiscing elit
-\item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
-\item Nulla commodo, erat quis gravida posuere, elit lacus lobortis est, quis porttitor odio mauris at libero
-\item Nam cursus est eget velit posuere pellentesque
-\item Vestibulum faucibus velit a augue condimentum quis convallis nulla gravida
-\end{itemize}
-\end{frame}
+\vskip -0.3cm
 
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Blocks of Highlighted Text}
-\begin{block}{Block 1}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
+\begin{block}{Theory}
+Let's start with a single neuron from the brain. Dendrites feed information into it, then there is the body of the neuron that performs some 'biology' operation on the inputs then outputs this information with its axons.
 \end{block}
 
-\begin{block}{Block 2}
-Pellentesque sed tellus purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum quis magna at risus dictum tempor eu vitae velit.
+\end{frame}
+
+\begin{frame}{Single Neuron Construction}
+With this is in mind, let's try to model a single neuron mathematically:
+\begin{center}
+	\begin{tikzpicture}
+	\draw (0,0) circle (1cm);
+	\draw [->] (-4,1.75) -- (-1,0.6);
+	\node[draw] at (-4.5,1.8) {$x_1$};
+	
+	\draw [->] (-4, 0.55) -- (-1.1,0.2);
+	\node[draw] at (-4.5, 0.55) {$x_2$};
+	
+	\draw [fill] (-4.5,-0.15) circle [radius=0.075];
+	\draw [fill] (-4.5,-0.55) circle [radius=0.075];
+	\draw [fill] (-4.5,-0.95) circle [radius=0.075];
+	
+	\draw (0,1) -- (0,-1);
+	
+	\draw [->] (-4,-1.75) -- (-1,-0.6);
+	\node[draw] at (-4.5,-1.8) {$x_i$};
+	
+	\draw [->] (1.1,0) -- (4.0,0);
+	\node[draw] at (4.6,0) {$O_n$};
+	
+	\node[text width=3cm, align=center,font=\Large] at (0,0) 
+    {\textbf{$\Sigma \:  \:\:  f$}};
+    
+    
+	\end{tikzpicture}
+\end{center}
+Our input denoted by $x_i$ have our inputs and then flow into the 'nucleus' of the neuron. There, a function is performed on all of the inputs and that information is then passed to another neuron or neurons.
+
+\end{frame}
+
+\begin{frame}{Single Neuron Construction}
+
+\begin{center}
+	\begin{tikzpicture}
+	\draw (0,0) circle (1cm);
+	\draw [->] (-4,1.75) -- node[label= above:$w_1$] {} (-1,0.6);
+	\node[draw] at (-4.5,1.8) {$x_1$};
+	
+	\draw [->] (-4, 0.55) -- node[label= below:$w_2$]  {} (-1.1,0.2);
+	\node[draw] at (-4.5, 0.55) {$x_2$};
+	
+	\draw [fill] (-4.5,-0.15) circle [radius=0.075];
+	\draw [fill] (-4.5,-0.55) circle [radius=0.075];
+	\draw [fill] (-4.5,-0.95) circle [radius=0.075];
+	
+	\draw (0,1) -- (0,-1);
+	
+	\draw [->] (-4,-1.75) -- node[label= below:$w_i$]  {} (-1,-0.6);
+	\node[draw] at (-4.5,-1.8) {$x_i$};
+	
+	\draw [->] (1.1,0) -- (4.0,0);
+	\node[draw] at (4.6,0) {$O_n$};
+	
+	\node[text width=3cm, align=center,font=\Large] at (0,0) 
+    {\textbf{$\Sigma \:  \:\:  f$}};
+    
+    
+	\end{tikzpicture}
+	
+\end{center}
+
+\begin{block}{Neuron Formula}
+For a given neuron we can get the following formula:
+$$
+O_n = \sigma \Big(\sum_{i=1}^{n}{x_iw_i} + b \Big)
+$$
 \end{block}
 
-\begin{block}{Block 3}
-Suspendisse tincidunt sagittis gravida. Curabitur condimentum, enim sed venenatis rutrum, ipsum neque consectetur orci, sed blandit justo nisi ac lacus.
-\end{block}
+
 \end{frame}
 
-%------------------------------------------------
+\begin{frame}{Full Neural Network}
 
-\begin{frame}
-\frametitle{Multiple Columns}
-\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-
-\column{.45\textwidth} % Left column and width
-\textbf{Heading}
-\begin{enumerate}
-\item Statement
-\item Explanation
-\item Example
-\end{enumerate}
-
-\column{.5\textwidth} % Right column and width
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-
-\end{columns}
-\end{frame}
-
-%------------------------------------------------
-\section{Project One }
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Table}
-\begin{table}
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\caption{Table caption}
-\end{table}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}
-
-%------------------------------------------------
-
-
-%------------------------------------------------
-\section{Project Two }
-%------------------------------------------------
-
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Verbatim}
-\begin{example}[Theorem Slide Code]
-\begin{verbatim}
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}\end{verbatim}
-\end{example}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Figure}
-Uncomment the code on this slide to include your own image from the same directory as the template .TeX file.
-%\begin{figure}
-%\includegraphics[width=0.8\linewidth]{test}
-%\end{figure}
-\end{frame}
-
-%------------------------------------------------
-\section{Summary }
-%------------------------------------------------
-
-%------------------------------------------------
-
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Citation}
-An example of the \verb|\cite| command to cite within the presentation:\\~
-
-This statement requires citation \cite{p2}.
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{References}
-
-\begin{multicols}{2}
-\footnotesize{
-\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
-\bibitem[Russell, 2009]{p2} Stuart Russel \& Peter Norvig (2009)
-\newblock Artificial Intelligence: A Modern Approach
-\newblock \emph{Prentice Hall Press} (3rd) 0136042597
-
-\bibitem[Smith, 2012]{p1} John Smith (2012)
-\newblock Title of the publication
-\newblock \emph{Journal Name} 12(3), 45 -- 678.
-
-\bibitem[Smith, 2012]{p1} John Smith (2012)
-\newblock Title of the publication
-\newblock \emph{Journal Name} 12(3), 45 -- 678.
-
-\bibitem[Smith, 2012]{p1} John Smith (2012)
-\newblock Title of the publication
-\newblock \emph{Journal Name} 12(3), 45 -- 678.
-\end{thebibliography}
+\tikzset{%
+  every neuron/.style={
+    circle,
+    draw,
+    minimum size=1cm
+  },
+  neuron missing/.style={
+    draw=none, 
+    scale=4,
+    text height=0.333cm,
+    execute at begin node=\color{black}$\vdots$
+  },
 }
-\end{multicols}
 
+\begin{figure}[htbp]
+	\centering
+\hspace*{-4.5cm}
+\vspace*{-2.5cm}
+\begin{tikzpicture}[x=1.6cm, y=1.5cm, >=stealth, transform canvas={scale=0.75}]
+
+\foreach \m/\l [count=\y] in {1,2,missing,3}
+  \node [every neuron/.try, neuron \m/.try] (input-\m) at (0,2.5-\y) {};
+
+\foreach \m [count=\y] in {1, 2,missing,3}
+  \node [every neuron/.try, neuron \m/.try ] (hidden-\m) at (2,3.2-\y*1.25) {};
+
+\foreach \m [count=\y] in {1,missing,2}
+  \node [every neuron/.try, neuron \m/.try ] (output-\m) at (4,2.0-\y) {};
+
+\foreach \l [count=\i] in {1,2,n}
+  \draw [<-] (input-\i) -- ++(-1,0)
+    node [above, midway] {$I_\l$};
+
+\foreach \l [count=\i] in {1,2,n}
+  \node [above] at (hidden-\i.north) {$H_\l$};
+
+\foreach \l [count=\i] in {1,n}
+  \draw [->] (output-\i) -- ++(1,0)
+    node [above, midway] {$O_\l$};
+
+\foreach \i in {1,...,3}
+  \foreach \j in {1,...,3}
+    \draw [->] (input-\i) -- (hidden-\j);
+
+\foreach \i in {1,...,3}
+  \foreach \j in {1,...,2}
+    \draw [->] (hidden-\i) -- (output-\j);
+
+\foreach \l [count=\x from 0] in {Input, Hidden, Ouput}
+  \node [align=center, above] at (\x*2,2.7) {\l \\ layer};
+
+\end{tikzpicture}
+
+\end{figure}
 
 \end{frame}
 
-%------------------------------------------------
+\subsection{Mathematics}
 
-\begin{frame}
-\Huge{\centerline{The End}}
+\begin{frame}{Readable Mathematics}
+
+Let $X_1, X_2, \ldots, X_n$ be a sequence of independent and identically distributed random variables with $\text{E}[X_i] = \mu$ and $\text{Var}[X_i] = \sigma^2 < \infty$, and let
+$$S_n = \frac{X_1 + X_2 + \cdots + X_n}{n}
+      = \frac{1}{n}\sum_{i}^{n} X_i$$
+denote their mean. Then as $n$ approaches infinity, the random variables $\sqrt{n}(S_n - \mu)$ converge in distribution to a normal $\mathcal{N}(0, \sigma^2)$.
+
 \end{frame}
-
-%----------------------------------------------------------------------------------------
 
 \end{document}
