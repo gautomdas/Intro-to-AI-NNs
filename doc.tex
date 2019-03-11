@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{wrapfig}
 \usepackage{tikz}
+\usepackage{amsmath}
 \usetikzlibrary{positioning}
 \usepackage{geometry}
 
@@ -181,8 +182,8 @@ Now we have two vectors: the output layer of the model and the expected value. I
 $$
 MSE=\frac{1}{n}\sum_{i=1}^{n}(\hat{y}_i-\hat{y})^2
 $$
-\vspace{-3ex}
-For different applications there are specific functions that perform better than others. The cost function itself is the 
+\vspace{0ex}
+For different applications there are specific functions that perform better than others. The cost function itself is the average of all the different costs in a training data set. 
 
 \subsection*{Backward Propagation}
 Now we finally have our error how do we actually edit the neural network? We take advantage of an algorithm known as backpropagation. To best understand this, let's set up a very basic neural network with two neurons:
@@ -194,7 +195,7 @@ Now we finally have our error how do we actually edit the neural network? We tak
 	\draw (2.5,0) circle (1cm);
 	
 	
-	\draw [->] (-1.35,0) -- node[label= below:$w_i$]  {} (1.35,0);
+	\draw [->] (-1.35,0) -- node[label= below:$w_L$]  {} (1.35,0);
 	
 	\node[text width=2cm, align=center,font=\Large] at (-2.5,0) 
     {$a^{L-1}$};
@@ -207,21 +208,69 @@ Now we finally have our error how do we actually edit the neural network? We tak
  
  Let's start by calculation the cost of our last node $a^L$ versus the real output $y$:
  $$
- C = 
+ C = (a^L-y)^2
  $$
  
+ From here, we want to figure out how sensitive the cost function is to the weight $w^L$. In more formal terms we want $\frac{\partial C}{\partial w^L}$. Knowing how each value in a neural network is connected we want to first define a relationship between $a^{L-1}$ and $a^L$:
+ $$
+ z^{L} = w^{L}a^{L-1}+b^{L-1}
+ $$
+ $$
+ a^{L} = \varphi (x^L)
+ $$
+ 
+ Now we can establish a clear relationship between the cost and the weight:
+ $$
+ \frac{\partial C}{\partial w_L} = \frac{\partial z^L}{\partial w_L} \frac{\partial a^L}{\partial z^L} \frac{\partial C}{\partial a^L}
+ $$
+ 
+ Doing the specific partial derivatives we can solve each value in our chain rule to get our final value:
+ $$\frac{\partial z^L}{\partial w_i} = a^{L-1}$$
+ $$\frac{\partial a^L}{\partial z^L} = \varphi'(z^L)$$
+ $$ \frac{\partial C}{\partial a^L} = 2(a^L-y)$$
+ 
+ We have now our final cost formula of:
+ $$
+  \frac{\partial C}{\partial w^L} = a^{L-1} \varphi'(z^L) 2(a^L-y)
+ $$
+ \newpage
+ Our gradient for the function is the average of all of these cost functions in relation to every output and weight/bias:
+
+ 
+ \[
+ \nabla C = \begin{bmatrix} 
+      \frac{\partial C}{\partial w^1} \\
+      \frac{\partial C}{\partial b^1} \\
+    \vdots  \\
+     \frac{\partial C}{\partial w^L} \\
+      \frac{\partial C}{\partial b^L} \\
+    \end{bmatrix}
+\]
+ 
+ Finally, we have the gradient descent algorithm. Gradient descent is an iterative algorithm which takes steps to reduce a function. Thus we first have to define a learning rate we call $\alpha$. We also need our cost for the current input. From there given a certain point $\Theta_j$ we can define the best path to reduce it's weight as:
+ $$
+ \Theta_j = \Theta_j - \alpha\frac{\partial }{\partial \Theta_j} *C
+ $$
+ 
+ This just is our gradient descent algorithm. Formally you would combine this with the cost function, but as of now you have gained the building blocks behind neural networks.
 
 \vspace{-4ex}
 \section*{Convolutional Neural Networks}
 \vspace{-3ex}
-- Theory
-- Filters
-- Methods
-- Backpropagation
+
+For convolutional neural networks, the goal of the 'convolutions' is to convert the images to an array of features. Convolutional neural networks basically consists of two steps: creating a feature map and pooling the network. The feature map is created by multiplying some matrix over a given image. Different matrixes allow for different things to be highlighted. From there, pooling consists of taking the max number in a matrix of pixels. This reduces the image size. From there the final images are 'flattened' or in other words just converted to a 1D array and finally fed into a generic neural network.
 
 
+\vspace{-4ex}
+\section*{Frameworks}
+\vspace{-3ex}
 
+There are two different neural network frameworks that stand king but both have their strengths and weaknesses: TensorFlow/Keras and PyTorch. TensorFlow was built on the idea that you build a graph of the neural network at run time and then use this neural network when the computation is finished. PyTorch on the other hand uses something known as dynamic graphs. During the run-time of the program, PyTorch actively defines its graph as its being run. This allows for the neural network to actually change shape is desired by the researcher.
 
+\vspace{-4ex}
+\section*{Conclusion}
+\vspace{-3ex}
+Neural networks are a very impressive form of artificial intelligence but can only be used for specific tasks. It is not a general form of AI.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
