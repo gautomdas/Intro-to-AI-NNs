@@ -156,25 +156,12 @@ Combining many of these networks gives you a perceptron as seen below:
 
 \subsection*{Forward Propagation}
 \vspace{-3ex}
-A perceptron is our neural network. Inputting the values at the start of the input layer and then running it through the network will give you the predicted output. To derive the general formula for a vector describing the weights at any given hidden layer. Starting with the following formula for a given value in the hidden layer denoted $H_n$:
+A perceptron is our neural network. Inputting the values at the start of the input layer and then running it through the network will give you the predicted output. We can describe the weights of a general vector at any given hidden layer $H_n$:
 $$
 H_n = w_1i_1 + w_2i_2 + ... + w_ni_n
 $$
-\vspace{-1ex}
-A keen observer may recognize the implementation of matrix multiplication. A general formula for a given hidden layer is given below:
 
-\vspace{-1ex}
-
-\vspace{-1ex}
-\vspace{-1ex}
-\vspace{-1ex}
-\vspace{-1ex}
-$$
-H = x^Tw + b
-$$
-\vspace{-3ex}
-\vspace{-3ex}
-\vspace{-3ex}
+\vspace{-2ex}
 \vspace{-3ex}
 \subsection*{Cost Function}
 \vspace{-3ex}
@@ -186,7 +173,7 @@ $$
 For different applications there are specific functions that perform better than others. The cost function itself is the average of all the different costs in a training data set. 
 
 \subsection*{Backward Propagation}
-Now we finally have our error how do we actually edit the neural network? We take advantage of an algorithm known as backpropagation. To best understand this, let's set up a very basic neural network with two neurons:
+Now that we can evaluate our error, we can change our neural network with backpropogation. Let's take a simple example of a network with two neurons:
 
  \begin{center}
 	\begin{tikzpicture}
@@ -247,18 +234,18 @@ Now we finally have our error how do we actually edit the neural network? We tak
     \end{bmatrix}
 \]
  
- Finally, we have the gradient descent algorithm. Gradient descent is an iterative algorithm which takes steps to reduce a function. Thus we first have to define a learning rate we call $\alpha$. We also need our cost for the current input. From there given a certain point $\Theta_j$ we can define the best path to reduce it's weight as:
+ Finally, we have the gradient descent algorithm. Gradient descent is an iterative algorithm which takes steps to reduce a function. Thus we first have to define a learning rate we call $\alpha$. We also need our cost for the current input. From there given a certain point $\Theta_j$ we can define the best path to reduce its weight as:
  $$
  \Theta_j = \Theta_j - \alpha\frac{\partial }{\partial \Theta_j} *C
  $$
  
- This just is our gradient descent algorithm. Formally you would combine this with the cost function, but as of now you have gained the building blocks behind neural networks.
+ This is our gradient descent algorithm. Formally you would combine this with the cost function, but these are the basic building blocks behind neural networks.
 
 \vspace{-4ex}
 \section*{Convolutional Neural Networks}
 \vspace{-3ex}
 
-For convolutional neural networks, the goal of the 'convolutions' is to convert the images to an array of features. Convolutional neural networks basically consists of two steps: creating a feature map and pooling the network. The feature map is created by multiplying some matrix over a given image. Different matrixes allow for different things to be highlighted. From there, pooling consists of taking the max number in a matrix of pixels. This reduces the image size. From there the final images are 'flattened' or in other words just converted to a 1D array and finally fed into a generic neural network.
+For convolutional neural networks, the goal of the 'convolutions' is to convert the images to an array of features. These networks consists of two steps: creating a feature map and pooling the network. The feature map is created by multiplying some matrix over a given image. Different matrixes are designed to highlighted different feature types. From there, pooling consists of taking the max number in a matrix of pixels. This reduces the image size. From there the final images are 'flattened' by converting it to a 1D array and finally fed into a generic neural network.
 
 
 \vspace{-4ex}
